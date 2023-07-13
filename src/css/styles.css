@@ -51,5 +51,41 @@ img {
 }
 
 .search-form button:hover {
-  background-color: #14e2e9;
+  background-color: #dee26c;
+}
+
+.info {
+  display: inline-block;  
+}
+
+.info-item {
+  display: inline;
+  font-size: 12px;
+}
+
+.user-list {
+  margin: 0;
+  list-style: none;
+  padding: 24px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.user-list li:not(:last-child) {
+  margin-bottom: 16px;
+}
+
+.gallery {
+   display: inline;    
+}
+
+.gallery_image {
+  height: 300px;
+  width: 350px;
+  object-fit: cover;
+}
+
+.gallery_list {
+  display: inline;
 }
