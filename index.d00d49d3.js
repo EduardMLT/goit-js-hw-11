@@ -1,0 +1,2 @@
+const e=document.querySelector(".btn"),t=document.querySelector(".user-list");e.addEventListener("click",(()=>{fetch("https://pixabay.com/api/?key=38232376-4840eb4d2a32943b9bc00372c&q=yellow+flowers&image_type=photo").then((e=>{if(!e.ok)throw new Error(e.status);return e.json()})).then((e=>function(e){console.log(e.hits);const o=e.hits.map((e=>{})).join("");t.innerHTML=o}(e))).catch((e=>console.log(e)))}));
+//# sourceMappingURL=index.d00d49d3.js.map
