@@ -30,8 +30,7 @@ function renderUserList(users) {
   console.log(users.hits);  
   const markup = users.hits
     .map((user) => {
-        return 
-        `<li class="info">
+        return `<li class="info">
           <img class="gallery_image" src="${user.webformatURL}" alt="">
             <div class="gallery_list">
                <p class="info-item"><b>likes</b>: ${user.likes}</p>
