@@ -54,11 +54,20 @@ img {
   background-color: #dee26c;
 }
 
-.info {
-  display: inline-block;  
+.btn {
+  cursor: pointer;
 }
 
-.info-item {
+.gallery_card {
+
+}
+
+.gallery_info {
+  display: inline-block;
+  cursor: pointer;  
+}
+
+.gallery_item {
   display: inline;
   font-size: 12px;
 }

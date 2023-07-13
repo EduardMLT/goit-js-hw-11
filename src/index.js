@@ -30,15 +30,17 @@ function renderUserList(users) {
   console.log(users.hits);  
   const markup = users.hits
     .map((user) => {
-        return `<li class="info">
-          <img class="gallery_image" src="${user.webformatURL}" alt="">
-            <div class="gallery_list">
-               <p class="info-item"><b>likes</b>: ${user.likes}</p>
-               <p class="info-item"><b>views</b>: ${user.views}</p>
-               <p class="info-item"><b>comments</b>: ${user.comments}</p>          
-               <p class="info-item"><b>downloads</b>: ${user.downloads}</p>
-            </div>
-        </li>`;
+        return `<div class="gallery_card">
+          <a class="gallery_info" href="${user.largeImageURL}">
+            <img class="gallery_image" src="${user.webformatURL}" alt="">
+              <div class="gallery_list">
+                 <p class="gallery_item"><b>likes</b>: ${user.likes}</p>
+                 <p class="gallery_item"><b>views</b>: ${user.views}</p>
+                 <p class="gallery_item"><b>comments</b>: ${user.comments}</p>          
+                 <p class="gallery_item"><b>downloads</b>: ${user.downloads}</p>
+              </div>
+          </a>
+        </div>`;
     })
     .join("");
   userList.innerHTML = markup;
