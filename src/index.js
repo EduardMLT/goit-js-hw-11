@@ -13,9 +13,12 @@ const userList = document.querySelector(".user-list");
 
 fetchUsersBtn.addEventListener('click', () => {
   console.log(`1-query: ${query}`);
-  fetchUsers()
+  if (query != '') {
+     fetchUsers()
     .then((users) => renderUserList(users))
     .catch((error) => console.log(error));
+  }
+  
 });
 // --------------------------------
 
@@ -38,7 +41,8 @@ function onSearch(e) {
     };
     
     console.log(`4-пошук: ${query}`);
-    e.currentTarget.reset();
+  e.currentTarget.reset();
+  
     return ;
   
 }
@@ -47,7 +51,7 @@ function onSearch(e) {
 // https://jsonplaceholder.typicode.com/users
 function fetchUsers() {   
     console.log(`5-пошук: ${query}`);    
-    const url = `https://pixabay.com/api/?key=38232376-4840eb4d2a32943b9bc00372c&q=${query}&image_type=photo&per_page=3`
+    const url = `https://pixabay.com/api/?key=38232376-4840eb4d2a32943b9bc00372c&q=${query}&image_type=photo&per_page=8`
   
   return fetch(url).then(
     (response) => {
@@ -62,7 +66,7 @@ function fetchUsers() {
 }
 
 function renderUserList(users) {   
-    console.log("7-пошук ",users.hits);
+    console.log("7-пошук",users.hits);
     // e.preventDefault();
   const markup = users.hits
     .map((user) => {
