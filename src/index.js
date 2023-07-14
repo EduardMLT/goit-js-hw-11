@@ -2,21 +2,56 @@
 //     .then(r => r.json())
 //     .then(console.log);
 
-    
+
+import "simplelightbox/dist/simple-lightbox.min.css"; 
+import SimpleLightbox from 'simplelightbox'; 
+
+let query = 'hello';
 
 const fetchUsersBtn = document.querySelector(".btn");
 const userList = document.querySelector(".user-list");
 
-fetchUsersBtn.addEventListener("click", () => {
+fetchUsersBtn.addEventListener('click', () => {
+  console.log(`1-query: ${query}`);
   fetchUsers()
     .then((users) => renderUserList(users))
     .catch((error) => console.log(error));
 });
+// --------------------------------
 
+function inputSearch() {
+   console.log(`2-query: ${query}`);
+   const searchForm = document.querySelector(".search-form");
+   searchForm.addEventListener("submit", onSearch);
+}
+
+inputSearch();
+
+function onSearch(e) {
+   console.log(`3-query: ${query}`);
+   e.preventDefault();
+    
+   query = e.currentTarget.elements.query.value;
+  
+  if (query === '') {
+    return alert('Введите что-то нормальное');
+    };
+    
+    console.log(`4-пошук: ${query}`);
+    e.currentTarget.reset();
+    return ;
+  
+}
+
+// --------------------------------
 // https://jsonplaceholder.typicode.com/users
-function fetchUsers() {
-  return fetch("https://pixabay.com/api/?key=38232376-4840eb4d2a32943b9bc00372c&q=yellow+flowers&image_type=photo").then(
+function fetchUsers() {   
+    console.log(`5-пошук: ${query}`);    
+    const url = `https://pixabay.com/api/?key=38232376-4840eb4d2a32943b9bc00372c&q=${query}&image_type=photo&per_page=3`
+  
+  return fetch(url).then(
     (response) => {
+      console.log(`6-пошук: ${query}`); 
       if (!response.ok) {
         throw new Error(response.status);
           }
@@ -26,8 +61,9 @@ function fetchUsers() {
   );
 }
 
-function renderUserList(users) {
-  console.log(users.hits);  
+function renderUserList(users) {   
+    console.log("7-пошук ",users.hits);
+    // e.preventDefault();
   const markup = users.hits
     .map((user) => {
         return `<div class="gallery_card">
@@ -43,5 +79,9 @@ function renderUserList(users) {
         </div>`;
     })
     .join("");
-  userList.innerHTML = markup;
+    userList.innerHTML = markup;
+    const lightbox = new SimpleLightbox('.gallery a', {
+  captionsData: 'alt', captionPosition: 'bottom', captionDelay: 250
+});
 }
+
