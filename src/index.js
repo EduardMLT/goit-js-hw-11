@@ -17,18 +17,21 @@ function onSearch(e) {
   
   if (query === '') {
     return alert('Enter the word to search ...');
-    };
-    
+    };    
     console.log(`4-пошук: ${query}`);
   // e.currentTarget.reset();
   
-    return ;
-  
+   fetchUsers()
+    .then((users) => renderUserList(users))
+    .catch((error) => console.log(error));
+
+    return ;  
 }
 
 function fetchUsers() {   
     console.log(`5-пошук: ${query}`);    
-    const url = `https://pixabay.com/api/?key=38232376-4840eb4d2a32943b9bc00372c&q=${query}&image_type=photo&per_page=8`
+  const url = `https://pixabay.com/api/?key=38232376-4840eb4d2a32943b9bc00372c&q=${query}&image_type=photo&per_page=8`
+  console.log(`5-URL: ${url}`);
   
   return fetch(url).then(
     (response) => {
@@ -69,13 +72,13 @@ function renderUserList(users) {
 searchForm.addEventListener("submit", onSearch);
 console.log(`0-query: ${query}`);
    
-fetchUsersBtn.addEventListener('click', () => {
-  console.log(`1-query: ${query}`);
-  if (query != '') {
-     fetchUsers()
-    .then((users) => renderUserList(users))
-    .catch((error) => console.log(error));
-  }
-});
+// fetchUsersBtn.addEventListener('click', () => {
+//   console.log(`1-query: ${query}`);
+//   if (query != '') {
+//      fetchUsers()
+//     .then((users) => renderUserList(users))
+//     .catch((error) => console.log(error));
+//   }
+// });
   
 
