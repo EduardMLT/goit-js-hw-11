@@ -10,25 +10,28 @@ let query = 'hello';
 
 const fetchUsersBtn = document.querySelector(".btn");
 const userList = document.querySelector(".user-list");
+const searchForm = document.querySelector(".search-form");
 
-fetchUsersBtn.addEventListener('click', () => {
-  console.log(`1-query: ${query}`);
-  if (query != '') {
-     fetchUsers()
-    .then((users) => renderUserList(users))
-    .catch((error) => console.log(error));
-  }
+
+// fetchUsersBtn.addEventListener('click', () => {
+//   console.log(`1-query: ${query}`);
+//   if (query != '') {
+//      fetchUsers()
+//     .then((users) => renderUserList(users))
+//     .catch((error) => console.log(error));
+//   }
+//   });
   
-});
+
 // --------------------------------
 
-function inputSearch() {
-   console.log(`2-query: ${query}`);
-   const searchForm = document.querySelector(".search-form");
-   searchForm.addEventListener("submit", onSearch);
-}
+// function inputSearch() {
+//    console.log(`2-query: ${query}`);
+//    const searchForm = document.querySelector(".search-form");
+//    searchForm.addEventListener("submit", onSearch);
+// }
 
-inputSearch();
+// inputSearch();
 
 function onSearch(e) {
    console.log(`3-query: ${query}`);
@@ -41,7 +44,7 @@ function onSearch(e) {
     };
     
     console.log(`4-пошук: ${query}`);
-  e.currentTarget.reset();
+  // e.currentTarget.reset();
   
     return ;
   
@@ -66,7 +69,7 @@ function fetchUsers() {
 }
 
 function renderUserList(users) {   
-    console.log("7-пошук",users.hits);
+    console.log(`7-пошук: ${query}`,users.hits);
     // e.preventDefault();
   const markup = users.hits
     .map((user) => {
@@ -89,3 +92,15 @@ function renderUserList(users) {
 });
 }
 
+
+
+fetchUsersBtn.addEventListener('click', () => {
+  console.log(`1-query: ${query}`);
+  if (query != '') {
+     fetchUsers()
+    .then((users) => renderUserList(users))
+    .catch((error) => console.log(error));
+  }
+});
+  
+searchForm.addEventListener("submit", onSearch);
