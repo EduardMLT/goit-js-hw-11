@@ -2,6 +2,7 @@ import "simplelightbox/dist/simple-lightbox.min.css";
 import SimpleLightbox from 'simplelightbox'; 
 
 let query = '';
+let page = 1;
 
 const fetchUsersBtn = document.querySelector(".btn");
 const userList = document.querySelector(".user-list");
@@ -31,7 +32,7 @@ function onSearch(e) {
 
 function fetchUsers() {   
     console.log(`5-пошук: ${query}`);    
-  const url = `https://pixabay.com/api/?key=38232376-4840eb4d2a32943b9bc00372c&q=${query}&image_type=photo&per_page=8`
+  const url = `https://pixabay.com/api/?key=38232376-4840eb4d2a32943b9bc00372c&q=${query}&image_type=photo&per_page=6&page=${page}`
   console.log(`5-URL: ${url}`);
   
   return fetch(url).then(
@@ -73,16 +74,17 @@ function renderUserList(users) {
 });
 }
 
+function onBtnLoadMoreClick() {
+  
+  page += 1;
+  // onSearch();
+  fetchUsers(page);
+//   renderUserList();  
+ }
+
 searchForm.addEventListener("submit", onSearch);
 console.log(`0-query: ${query}`);
    
-// fetchUsersBtn.addEventListener('click', () => {
-//   console.log(`1-query: ${query}`);
-//   if (query != '') {
-//      fetchUsers()
-//     .then((users) => renderUserList(users))
-//     .catch((error) => console.log(error));
-//   }
-// });
+btnLoadMore.addEventListener('click', onBtnLoadMoreClick);
   
 
