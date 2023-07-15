@@ -6,8 +6,9 @@ let query = '';
 const fetchUsersBtn = document.querySelector(".btn");
 const userList = document.querySelector(".user-list");
 const searchForm = document.querySelector(".search-form");
+const btnLoadMore = document.querySelector('.load-more');
 
-
+btnLoadMore.style.display = 'none';
 
 function onSearch(e) {
    console.log(`3-query: ${query}`);
@@ -63,7 +64,10 @@ function renderUserList(users) {
         </div>`;
     })
     .join("");
-    userList.innerHTML = markup;
+  userList.innerHTML = markup;
+  
+  btnLoadMore.style.display = 'block';
+
     const lightbox = new SimpleLightbox('.gallery a', {
   captionsData: 'alt', captionPosition: 'bottom', captionDelay: 250
 });
