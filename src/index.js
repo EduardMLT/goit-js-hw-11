@@ -6,7 +6,7 @@
 import "simplelightbox/dist/simple-lightbox.min.css"; 
 import SimpleLightbox from 'simplelightbox'; 
 
-let query = 'hello';
+let query = '';
 
 const fetchUsersBtn = document.querySelector(".btn");
 const userList = document.querySelector(".user-list");
@@ -92,8 +92,9 @@ function renderUserList(users) {
 });
 }
 
-
-
+searchForm.addEventListener("submit", onSearch);
+console.log(`0-query: ${query}`);
+   
 fetchUsersBtn.addEventListener('click', () => {
   console.log(`1-query: ${query}`);
   if (query != '') {
@@ -103,4 +104,4 @@ fetchUsersBtn.addEventListener('click', () => {
   }
 });
   
-searchForm.addEventListener("submit", onSearch);
+
