@@ -1,8 +1,3 @@
-// fetch('https://pixabay.com/api/?key=38232376-4840eb4d2a32943b9bc00372c&q=yellow+flowers&image_type=photo',)
-//     .then(r => r.json())
-//     .then(console.log);
-
-
 import "simplelightbox/dist/simple-lightbox.min.css"; 
 import SimpleLightbox from 'simplelightbox'; 
 
@@ -13,25 +8,6 @@ const userList = document.querySelector(".user-list");
 const searchForm = document.querySelector(".search-form");
 
 
-// fetchUsersBtn.addEventListener('click', () => {
-//   console.log(`1-query: ${query}`);
-//   if (query != '') {
-//      fetchUsers()
-//     .then((users) => renderUserList(users))
-//     .catch((error) => console.log(error));
-//   }
-//   });
-  
-
-// --------------------------------
-
-// function inputSearch() {
-//    console.log(`2-query: ${query}`);
-//    const searchForm = document.querySelector(".search-form");
-//    searchForm.addEventListener("submit", onSearch);
-// }
-
-// inputSearch();
 
 function onSearch(e) {
    console.log(`3-query: ${query}`);
@@ -40,7 +16,7 @@ function onSearch(e) {
    query = e.currentTarget.elements.query.value;
   
   if (query === '') {
-    return alert('Введите что-то нормальное');
+    return alert('Enter the word to search ...');
     };
     
     console.log(`4-пошук: ${query}`);
@@ -50,8 +26,6 @@ function onSearch(e) {
   
 }
 
-// --------------------------------
-// https://jsonplaceholder.typicode.com/users
 function fetchUsers() {   
     console.log(`5-пошук: ${query}`);    
     const url = `https://pixabay.com/api/?key=38232376-4840eb4d2a32943b9bc00372c&q=${query}&image_type=photo&per_page=8`
