@@ -74,10 +74,10 @@ function renderUserList(users) {
           <a class="gallery_info" href="${user.largeImageURL}">
             <img class="gallery_image" src="${user.webformatURL}" alt="">
               <div class="gallery_list">
-                 <p class="gallery_item"><b>likes</b>: ${user.likes}</p>
-                 <p class="gallery_item"><b>views</b>: ${user.views}</p>
-                 <p class="gallery_item"><b>comments</b>: ${user.comments}</p>          
-                 <p class="gallery_item"><b>downloads</b>: ${user.downloads}</p>
+                 <p class="gallery_item"><b class="gallery_item_info">likes</b>${user.likes}</p>
+                 <p class="gallery_item"><b class="gallery_item_info">views</b>${user.views}</p>
+                 <p class="gallery_item"><b class="gallery_item_info">comments</b>${user.comments}</p>          
+                 <p class="gallery_item"><b class="gallery_item_info">downloads</b>${user.downloads}</p>
               </div>
           </a>
         </div>`;

@@ -72,6 +72,10 @@ img {
   font-size: 12px;
 }
 
+.gallery_item_info {
+  display: block;
+}
+
 .user-list {
   margin: 0;
   list-style: none;
@@ -96,5 +100,6 @@ img {
 }
 
 .gallery_list {
-  display: inline;
+  display: flex;
+  justify-content: space-evenly;
 }
