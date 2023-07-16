@@ -17,7 +17,7 @@ const galleryInstance = new GalleryAPI();
 const lightbox = new SimpleLightbox('.gallery a', {
   captionsData: 'alt', captionPosition: 'bottom', captionDelay: 250
 });
-let totalImages = 0;
+
 btnLoadMore.style.display = 'none';
 
 function onSearch(e) {
@@ -124,7 +124,7 @@ function onFetchSuccess(totalImages) {
 
 function createGalleryCards(users) {
   console.log(`7-пошук - users.total: ${query}`, users.total);
-  totalImages = users.total;
+  let totalImages = users.total;
   onFetchSuccess(totalImages);
   const markup = users.hits
     .map((user) => {
