@@ -17,7 +17,7 @@ const galleryInstance = new GalleryAPI();
 const lightbox = new SimpleLightbox('.gallery a', {
   captionsData: 'alt', captionPosition: 'bottom', captionDelay: 250
 });
-const totalImages = 0;
+let totalImages = 0;
 btnLoadMore.style.display = 'none';
 
 function onSearch(e) {
