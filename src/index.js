@@ -107,25 +107,25 @@ function onFetchInfo() {
   );
 }
 
-function onFetchSuccess(totalImages) {
-  Notiflix.Report.success(
-    'O-o!',
-    `'We found ${totalImages} images.'`,
-    'Okay',
-    {
-      position: 'center-center',
-      timeout: 3000,
-      width: '400px',
-      titleFontSize: '30px',
-      messageFontSize: '30px',
-    }
-  );
-}
+// function onFetchSuccess(totalImages) {
+//   Notiflix.Report.success(
+//     'O-o!',
+//     `'We found ${totalImages} images.'`,
+//     'Okay',
+//     {
+//       position: 'center-center',
+//       timeout: 3000,
+//       width: '400px',
+//       titleFontSize: '30px',
+//       messageFontSize: '30px',
+//     }
+//   );
+// }
 
 function createGalleryCards(users) {
   console.log(`7-пошук - users.total: ${query}`, users.total);
   totalImages = users.total;
-  onFetchSuccess(totalImages);
+  // onFetchSuccess(totalImages);
   const markup = users.hits
     .map((user) => {
         return `<div class="gallery_card">
