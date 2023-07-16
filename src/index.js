@@ -20,7 +20,8 @@ const lightbox = new SimpleLightbox('.gallery a', {
 
 btnLoadMore.style.display = 'none';
 
-function onSearch(e) {   
+function onSearch(e) {
+   console.log(`3-query: ${query}`);
   e.preventDefault();
   const totalImages = 0;
     
@@ -33,7 +34,9 @@ function onSearch(e) {
   if (query === '') {
     return alert('Enter the word to search ...');
     };    
-       
+    console.log(`4-пошук: ${query}`);
+  // e.currentTarget.reset();
+   
    fetchUsers()
     .then((users) => renderUserList(users))
     .catch((error) => console.log(error));
@@ -42,11 +45,13 @@ function onSearch(e) {
 }
 
 function fetchUsers() {   
-       
+    console.log(`5-пошук: ${query}`);    
   const url = `https://pixabay.com/api/?key=38232376-4840eb4d2a32943b9bc00372c&q=${query}&image_type=photo&per_page=40&page=${page}&orientation=horizontal`
-    
+  console.log(`5-URL: ${url}`);
+  
   return fetch(url).then(
-    (response) => {      
+    (response) => {
+      console.log(`6-пошук: ${query}`); 
       if (!response.ok) {
         throw new Error(response.status);
           }
@@ -63,14 +68,22 @@ function renderUserList(users) {
   btnLoadMore.style.display = 'block';
     
 }
+
+// function onBtnLoadMoreClick() {
+//   console.log("galleryInstance= ", galleryInstance.fetchImages());
+//   page += 1;
+//   fetchUsers(page);
+// }
  
 function onBtnLoadMoreClick() {
-  galleryInstance.page += 1;  
+  galleryInstance.page += 1;
+  console.log("galleryInstance= ", galleryInstance.fetchImages());
   galleryInstance.fetchImages().then(data => {
     if (data.data.total === data.data.totalHits) {
       btnLoadMore.style.display = 'none';
       onFetchInfo();
     }
+    console.log("data data= ", data);
     userList.insertAdjacentHTML(
       'beforeend',
       newGreateGalleryCards(data.data.hits)
@@ -110,7 +123,7 @@ function onFetchSuccess(totalImages) {
 }
 
 function createGalleryCards(users) {
- 
+  console.log(`7-пошук - users.total: ${query}`, users.total);
   totalImages = users.total;
   onFetchSuccess(totalImages);
   const markup = users.hits
@@ -166,6 +179,7 @@ function newGreateGalleryCards(arr) {
 }
 
 searchForm.addEventListener("submit", onSearch);
+console.log(`0-query: ${query}`);
    
 btnLoadMore.addEventListener('click', onBtnLoadMoreClick);
 
