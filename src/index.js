@@ -17,13 +17,13 @@ const galleryInstance = new GalleryAPI();
 const lightbox = new SimpleLightbox('.gallery a', {
   captionsData: 'alt', captionPosition: 'bottom', captionDelay: 250
 });
-
+const totalImages = 0;
 btnLoadMore.style.display = 'none';
 
 function onSearch(e) {
    console.log(`3-query: ${query}`);
   e.preventDefault();
-  const totalImages = 0;
+  
     
   query = e.currentTarget.elements.query.value;
   galleryInstance.q = query;
@@ -107,25 +107,25 @@ function onFetchInfo() {
   );
 }
 
-// function onFetchSuccess(totalImages) {
-//   Notiflix.Report.success(
-//     'O-o!',
-//     `'We found ${totalImages} images.'`,
-//     'Okay',
-//     {
-//       position: 'center-center',
-//       timeout: 3000,
-//       width: '400px',
-//       titleFontSize: '30px',
-//       messageFontSize: '30px',
-//     }
-//   );
-// }
+function onFetchSuccess(totalImages) {
+  Notiflix.Report.success(
+    'O-o!',
+    `'We found ${totalImages} images.'`,
+    'Okay',
+    {
+      position: 'center-center',
+      timeout: 3000,
+      width: '400px',
+      titleFontSize: '30px',
+      messageFontSize: '30px',
+    }
+  );
+}
 
 function createGalleryCards(users) {
   console.log(`7-пошук - users.total: ${query}`, users.total);
   totalImages = users.total;
-  // onFetchSuccess(totalImages);
+  onFetchSuccess(totalImages);
   const markup = users.hits
     .map((user) => {
         return `<div class="gallery_card">
