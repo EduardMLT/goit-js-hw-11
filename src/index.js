@@ -22,11 +22,13 @@ btnLoadMore.style.display = 'none';
 
 function onSearch(e) {
    console.log(`3-query: ${query}`);
-   e.preventDefault();
+  e.preventDefault();
+  const totalImages = 0;
     
   query = e.currentTarget.elements.query.value;
   galleryInstance.q = query;
   galleryInstance.page = 1;
+  
   
   
   if (query === '') {
@@ -44,7 +46,7 @@ function onSearch(e) {
 
 function fetchUsers() {   
     console.log(`5-пошук: ${query}`);    
-  const url = `https://pixabay.com/api/?key=38232376-4840eb4d2a32943b9bc00372c&q=${query}&image_type=photo&per_page=6&page=${page}&orientation=horizontal`
+  const url = `https://pixabay.com/api/?key=38232376-4840eb4d2a32943b9bc00372c&q=${query}&image_type=photo&per_page=40&page=${page}&orientation=horizontal`
   console.log(`5-URL: ${url}`);
   
   return fetch(url).then(
@@ -66,12 +68,6 @@ function renderUserList(users) {
   btnLoadMore.style.display = 'block';
     
 }
-
-// function onBtnLoadMoreClick() {
-//   console.log("galleryInstance= ", galleryInstance.fetchImages());
-//   page += 1;
-//   fetchUsers(page);
-// }
  
 function onBtnLoadMoreClick() {
   galleryInstance.page += 1;
@@ -97,17 +93,33 @@ function onFetchInfo() {
     'Okay',
     {
       position: 'center-center',
-      timeout: 5000,
+      timeout: 3000,
       width: '400px',
       titleFontSize: '30px',
-      messageFontSize: '20px',
+      messageFontSize: '30px',
+    }
+  );
+}
+
+function onFetchSuccess(totalImages) {
+  Notiflix.Report.success(
+    'O-o!',
+    `'We found ${totalImages} images.'`,
+    'Okay',
+    {
+      position: 'center-center',
+      timeout: 3000,
+      width: '400px',
+      titleFontSize: '30px',
+      messageFontSize: '30px',
     }
   );
 }
 
 function createGalleryCards(users) {
-    console.log(`7-пошук: ${query}`,users.hits);
-    // e.preventDefault();
+  console.log(`7-пошук - users.total: ${query}`, users.total);
+  totalImages = users.total;
+  onFetchSuccess(totalImages);
   const markup = users.hits
     .map((user) => {
         return `<div class="gallery_card">
